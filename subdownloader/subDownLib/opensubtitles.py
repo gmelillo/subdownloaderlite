@@ -128,7 +128,7 @@ class openSubtitles(object):
 			hash = filesize 
 			  
 			if filesize < 65536 * 2: 
-				return {'statis':0, 'error':"SizeError"}
+				return {'status':0, 'error':"SizeError"}
 		 
 			for x in range(65536/bytesize): 
 				buffer = f.read(bytesize) 
@@ -149,4 +149,4 @@ class openSubtitles(object):
 			return {'status':1, 'hash':returnedhash, 'size':filesize}
 
 		except(IOError): 
-			return {'statis':0, 'error':"IOError"}
+			return {'status':0, 'error':"IOError"}
