@@ -10,7 +10,7 @@ setup(
 	name = "subdownloaderlite",
 	version = version,
 	data_files=[
-		('', ['*.json'])
+		('', ['subdownloader-lite.json'])
 	],
 	author = "Gabriel Melillo",
 	author_email = "gabriel@melillo.me",

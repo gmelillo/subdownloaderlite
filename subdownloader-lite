@@ -16,10 +16,10 @@ This file is part of SubDownloaderLite.
 """
 
 import os, sys, getopt 
-from subdownloader.subDownLib.subtitlErrorHandler import subtitlErrorHandler
-from subdownloader.subDownLib.opensubtitles import openSubtitles
-from subdownloader.subDownLib.downloadManager import downloadManager
-from subdownloader.util.version import get_version
+from subdownloader.errors import subtitlErrorHandler
+from subdownloader.opensubtitles import openSubtitles
+from subdownloader.downloadmanager import downloadManager
+from subdownloader.utils.version import get_version
 
 
 def main(argv):
