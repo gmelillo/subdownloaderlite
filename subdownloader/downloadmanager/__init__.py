@@ -31,41 +31,45 @@ class downloadManager(openSubtitles):
 		return not os.path.isfile(video_subtitle_file)
 
 	def DownloadSingle(self,Video,Language):
-		if not self.checkLanguage(Language):
-			print "Language " + Language + " not supported"
-			return 0
+		for lan in Language:
+			if not self.checkLanguage(lan):
+				print "Language " + lan + " not supported"
 
-		if not self.checkIfSubtitleIsNeeded(Video,Language):
-			print Video + " already have " + Language + " subtitle"
-			return 0
+			elif not self.checkIfSubtitleIsNeeded(Video,lan):
+				print Video + " already have " + lan + " subtitle"
+			else:
+	        		print "Serching subtitle for file (" + lan + "): " + Video
 
-	        print "Serching subtitle for file : " + Video
+				retVal = self.searchSubtitle(Video,lan)
+				if retVal == 0:
+					print "\tNo subtitle found"
+					return 0
+				if retVal == 7:
+					print "\tConnection timed out"
+					return 0
+				if retVal == 6:
+					print "\tService Unaviable"
+					return 0
+				if retVal == 8:
+					print "\tConnection Refused"
+					return 0
+				if retVal != 1:
+        		        	print "\tUnknown Error"
+        		        	return 0
 
-		retVal = self.searchSubtitle(Video,Language)
-		if retVal == 0:
-			print "\tNo subtitle found"
-			return 0
-		if retVal == 7:
-			print "\tConnection timed out"
-			return 0
-		if retVal == 6:
-			print "\tService Unaviable"
-			return 0
-		if retVal == 8:
-			print "\tConnection Refused"
-			return 0
-		if retVal != 1:
-                	print "\tUnknown Error"
-                	return 0
-
-        	print "\tFetching subtitle...\n\tResult - " + self.fetchSelection()
-
-        	return 1
+        			print "\tFetching subtitle...\n\tResult - " + self.fetchSelection()
+	
+		return 1
 
 	def DownloadFolder(self,Folder,Language):
-		if not self.checkLanguage(Language):
-			print "Language " + Language + " not supported"
+		for lan in Language:
+			if not self.checkLanguage(lan):
+				print "Language " + lan + " not supported"
+				Language.remove(lan)
+
+		if len(Language) == 0:
 			return 0
+
 		filecount = 0
 		for root, dirs, files in os.walk(Folder):
 			for file in files:
