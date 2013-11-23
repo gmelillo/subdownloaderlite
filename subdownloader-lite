@@ -55,14 +55,14 @@ def main(argv):
 		sys.exit(2)
 
 	for lan in Language:
-		if not subtitles.checkLanguage(Language):
+		if not subtitles.checkLanguage(lan):
 			print "Language " + lan + " not supported\n"
 			Language.remove(lan)
 
-	if len(language) == 0:
-		print "No valid language selected."
-		usage()
-		sys.exit(2)
+	#if len(Language) == 0:
+	#	print "No valid language selected."
+	#	usage()
+	#	sys.exit(2)
 
 	print "Connecting to OpenSubtitles.org"
 	if subtitles.LogIn() == 0:
