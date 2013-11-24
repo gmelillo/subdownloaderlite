@@ -13,11 +13,6 @@ def get_version(version=None):
         assert len(version) == 5
         assert version[3] in ('alpha', 'beta', 'rc', 'final')
 
-    # Now build the two parts of the version number:
-    # main = X.Y[.Z]
-    # sub = .devN - for pre-alpha releases
-    #     | {a|b|c}N - for alpha, beta and rc releases
-
     parts = 2 if version[2] == 0 else 3
     main = '.'.join(str(x) for x in version[:parts])
 
@@ -35,12 +30,6 @@ def get_version(version=None):
 
 
 def get_git_changeset():
-    """Returns a numeric identifier of the latest git changeset.
-
-    The result is the UTC timestamp of the changeset in YYYYMMDDHHMMSS format.
-    This value isn't guaranteed to be unique, but collisions are very unlikely,
-    so it's sufficient for generating the development version numbers.
-    """
     repo_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     git_log = subprocess.Popen('git log --pretty=format:%ct --quiet -1 HEAD',
             stdout=subprocess.PIPE, stderr=subprocess.PIPE,
