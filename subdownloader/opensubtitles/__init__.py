@@ -18,6 +18,8 @@ import urllib2, StringIO, gzip, os, xmlrpclib, struct, errno, subdownloader.erro
 from subdownloader.settings.matrix import videoSupportedFormat, iso639LangCode
 from socket import error as socket_error
 
+xmlrpclib.Marshaller.dispatch[type(0L)] = lambda _, v, w: w("<value><i8>%d</i8></value>" % v)
+
 class openSubtitles(object):
 	userAgent = "OS Test User Agent"
 	username, password, res, token = "", "", "", ""

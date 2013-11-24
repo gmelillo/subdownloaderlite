@@ -54,7 +54,7 @@ class downloadManager(openSubtitles):
 					print "\tConnection Refused"
 					return 0
 				if retVal != 1:
-        		        	print "\tUnknown Error"
+        		        	print "\tUnknown Error : ", retVal
         		        	return 0
 
         			print "\tFetching subtitle...\n\tResult - " + self.fetchSelection()
