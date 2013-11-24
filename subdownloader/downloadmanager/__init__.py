@@ -55,9 +55,9 @@ class downloadManager(openSubtitles):
 					return 0
 				if retVal != 1:
         		        	print "\tUnknown Error : ", retVal
-        		        	return 0
+        		        	return 10
 
-        			print "\tFetching subtitle...\n\tResult - " + self.fetchSelection()
+        			print "\tFetching subtitle...\n\tResult - " , self.fetchSelection()
 	
 		return 1
 
