@@ -37,6 +37,7 @@ class openSubtitles(object):
 
 		return False
 
+	# 11 : Login error
 	def LogIn(self):
 		self.server = xmlrpclib.ServerProxy('http://api.opensubtitles.org/xml-rpc')
 		try:
@@ -49,8 +50,11 @@ class openSubtitles(object):
 			return 9
 
 		if 'token' in self.res:
-			self.token = self.res['token']
-			return 1
+			if self.res['token'] != ""
+				self.token = self.res['token']
+				return 1
+			else
+				return 11
 
 		return 0
 
