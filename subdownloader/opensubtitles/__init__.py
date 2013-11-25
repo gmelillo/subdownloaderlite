@@ -50,10 +50,10 @@ class openSubtitles(object):
 			return 9
 
 		if 'token' in self.res:
-			if self.res['token'] != ""
+			if self.res['token'] != "":
 				self.token = self.res['token']
 				return 1
-			else
+			else:
 				return 11
 
 		return 0
