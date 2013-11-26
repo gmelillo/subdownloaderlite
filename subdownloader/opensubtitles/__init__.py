@@ -17,11 +17,12 @@ This file is part of SubDownloaderLite.
 import urllib2, StringIO, gzip, os, xmlrpclib, struct, errno, subdownloader.errors
 from subdownloader.settings.matrix import videoSupportedFormat, iso639LangCode
 from socket import error as socket_error
+from subdownloader.utils.version import get_agent_version
 
 xmlrpclib.Marshaller.dispatch[type(0L)] = lambda _, v, w: w("<value><i8>%d</i8></value>" % v)
 
 class openSubtitles(object):
-	userAgent = "OS Test User Agent"
+	userAgent = "Sub Downloader Lite v" + get_agent_version()
 	username, password, res, token = "", "", "", ""
 	language = "eng"
 	server = None

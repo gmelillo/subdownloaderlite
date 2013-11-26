@@ -14,7 +14,7 @@ This file is part of SubDownloaderLite.
     along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-VERSION = (0, 0, 7, 'alpha', 0)
+VERSION = (0, 1, 0, 'alpha', 0)
 
 
 def get_version(*args, **kwargs):
