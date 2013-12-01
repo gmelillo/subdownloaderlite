@@ -96,7 +96,11 @@ class openSubtitles(object):
 			return 3
 
 		try:
-			self.res = self.server.SearchSubtitles(self.token,[ {"sublanguageid":language, "moviehash":video_hash['hash'], "moviebytesize":video_hash['size']} ])
+			self.res = self.server.SearchSubtitles(self.token,[ {"sublanguageid":language, "moviehash":video_hash['hash'], "moviebytesize":video_hash['size'], "imdbid":"2647544"} ])
+			#print os.path.splitext(os.path.basename(Location))[0]
+			#res = self.server.SearchMoviesOnIMDB(self.token,os.path.splitext(os.path.basename(Location))[0])
+			#for video in res['data']:
+			#	print video['id'] , " - ", video['title']
 		except xmlrpclib.ProtocolError as err:
 			return 6
 		except socket_error as serr:

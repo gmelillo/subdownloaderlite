@@ -71,11 +71,11 @@ def main(argv):
 
 	if os.path.isdir(Input):
 		print "Folder selected : " + Input
-		subtitles.DownloadFolder(Input,Language)
+		subtitles.DownloadFolderSubtitle(Input,Language)
 		subtitles.LogOut()
 	elif os.path.isfile(Input):
 		print "File selected : " + Input
-		retVal = subtitles.DownloadSingle(Input,Language)
+		retVal = subtitles.DownloadVideoSubtitle(Input,Language)
 		subtitles.LogOut()
 		sys.exit(retVal)
 	else:

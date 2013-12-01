@@ -30,7 +30,7 @@ class downloadManager(openSubtitles):
 
 		return not os.path.isfile(video_subtitle_file)
 
-	def DownloadSingle(self,Video,Language):
+	def DownloadVideoSubtitle(self,Video,Language):
 		for lan in Language:
 			if not self.checkLanguage(lan):
 				print "Language " + lan + " not supported"
@@ -61,7 +61,7 @@ class downloadManager(openSubtitles):
 	
 		return 1
 
-	def DownloadFolder(self,Folder,Language):
+	def DownloadFolderSubtitle(self,Folder,Language):
 		for lan in Language:
 			if not self.checkLanguage(lan):
 				print "Language " + lan + " not supported"
@@ -76,7 +76,7 @@ class downloadManager(openSubtitles):
 				for ext in videoSupportedFormat:
 					filename = os.path.join(root, file)
 					if file.endswith(ext):
-						self.DownloadSingle(filename,Language)
+						self.DownloadVideoSubtitle(filename,Language)
 						filecount += 1
 
 		print "Download completed." \
